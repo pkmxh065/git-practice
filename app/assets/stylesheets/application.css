@@ -1,0 +1,108 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+ 
+body {
+    font-family: verdana, arial, Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    margin: 33px;
+} 
+
+
+
+table {
+    display: table;
+    box-sizing: border-box;
+    border-collapse: separate;
+    text-indent: initial;
+    unicode-bidi: isolate;
+    border-spacing: 2px;
+}
+
+thead {
+    vertical-align: middle
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    unicode-bidi: isolate;
+    border-color: inherit;
+}
+
+th {
+    padding-bottom: 5px;
+    display:  table-cell;
+    vertical-align: inherit;
+    font-weight: bold;
+
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+}
+
+form {
+    display: block;
+    margin-top: 0em;
+}
+
+.new-book-item {
+    display: flex;
+}
+.flash-message {
+    border-radius: 5px;
+    padding: 16px 24px;
+    margin: 16px 0px;
+}
+
+#notice {
+    color: green;
+}
+
+.field {
+    margin-bottom: 10px;
+}
+
+
+label {
+    display: block;
+}
+
+
+.flash-message {
+    color: green;
+}
+
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+}
+
+p {
+    margin: 33px;
+}
+
+.action {
+    margin-bottom: 10px;
+}
+
+td {
+    padding-bottom: 7px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
