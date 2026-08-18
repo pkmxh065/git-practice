@@ -1,7 +1,7 @@
 <h2>New book</h2>
 <div class="field_with_error">
     <% if @book.errors.any? %>
-        <%= @book.errors.count %>error prohibited this book from being saved
+        <%= @book.errors.count %>error prohibited this book from being saved:
         <ul>
             <% @book.errors.full_messages.each do |message| %>
                 <li><%= message %></li>

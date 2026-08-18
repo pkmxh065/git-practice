@@ -36,7 +36,7 @@
 </div>
 <div class="field_with_error">
     <% if @book.errors.any? %>
-        <%= @book.errors.count %>error prohibited this book from being saved
+        <%= @book.errors.count %>error prohibited this book from being saved:
         <ul>
             <% @book.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
@@ -44,15 +44,14 @@
         </ul>
     <% end%>
 </div>
-    <%= form_with model: @book, local: true do |f| %>
-        <div class="field">
-            <label for="book-title">Title</label>
-            <%= f.text_field :title %>
-        </div>
-        <div class="field">
-            <label for="bookp-body">Body</label>
-            <%= f.text_area :body %>
-        </div>
-            <%= f.submit 'Create Book' %>
-    <% end %>
-</div>
+<%= form_with model: @book, local: true do |f| %>
+    <div class="field">
+        <label for="book-title">Title</label>
+        <%= f.text_field :title %>
+    </div>
+    <div class="field">
+        <label for="bookp-body">Body</label>
+        <%= f.text_area :body %>
+    </div>
+    <%= f.submit 'Create Book' %>
+<% end %>
