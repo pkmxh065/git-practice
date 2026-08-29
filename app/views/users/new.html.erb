@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+        <h2>Sign up</h2>
+
+        <%= form_with model: @user, url: users_path do |f| %>
+            <% if @user.errors.any? %>
+                <div class="error_explanation">
+                    <h3><%= pluralize(@user.errors.count, "error") %> prohibited this user from being sabed:</h3>
+                    <ul>
+                        <% @user.errors.full_messages.each do |msg| %>
+                            <li><%= msg %></li>
+                        <% end %>
+                    </ul>
+                </div>
+        <% end %>
+
+        <div class="field">
+            <%= f.label :name %><br>
+            <%= f.text_field :name, autofocus: true %>
+        </div>
+
+        <div class="field">
+            <%= f.label :email %><br>
+            <%= f.email_field :email_address %>
+        </div>
+
+        <div class="field">
+            <%= f.label :Password %>
+            <em>(6 characters minimum)</em><br>
+            <%= f.password_field :password %>
+        </div>
+
+        <div class="field">
+            <%= f.label :password_confirmation %><br>
+            <%= f.password_field :password_confirmation %>
+        </div>
+
+        <div class="actions">
+            <%= f.submit "Sign up", class: "btn btn-sm btn-success" %>
+        </div>
+
+        <%= link_to "Log in" %>
+
+        <% end %>
+    </div>
+</div>

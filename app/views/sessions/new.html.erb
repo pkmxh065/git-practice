@@ -1,0 +1,28 @@
+<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
+<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+      <h2>Log in</h2>
+      <%= form_with url: session_path, method: :post do |f| %>
+        <div class="field">
+          <%= f.label "name" %><br>
+          <%= f.text_field :name, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your name", value: params[:name] %>
+        </div>
+        <div class="field">
+          <%= f.label "Password" %><br>
+          <%= f.password_field :password, required: true, autocomplete: "current-password" %>
+        </div>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me, "Remember me" %>
+        </div>
+        <div class="action">
+          <%= f.submit "Log in", class: "btn btn-sm btn-primary" %>
+        </div>
+      <% end %>
+      <%= link_to "Sign up", new_user_path %><br>
+      <%= link_to "Forgot your password?", new_user_path %>
+    </div>
+  </div>
+</div>

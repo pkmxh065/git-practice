@@ -1,0 +1,83 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+
+ body {
+   display: block;
+ }
+ 
+ .container, .container-fluid, .container-xl,
+   .container-lg, .container-md, .container-sm {
+      width: 100%;
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+   }
+ .row {
+    display: flex;
+    flex-wrap: wrap;
+ }
+
+ label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+ }
+
+ .form-group {
+   margin-bottom: 1rem;
+ }
+
+ ::before {
+    box-sizing: border-box;
+ }
+
+ h1, .h1 {
+   font-size: 2.5rem;
+ }
+ 
+ h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+ }
+
+ .navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+ }
+
+ .navbar-collapse {
+  flex-basis: 100%;
+  flex-grow: 1;
+  align-items: center;
+ }
+ .navbar-nav {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+ }
+
+ .row {
+   display: flex;
+ }
+
+ p {
+   text-align: center;
+ }
+
+ .mx-auto {
+   margin-right: auto;
+   margin-left: auto;
+ }

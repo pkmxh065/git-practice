@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <%= render 'books/info', user: @book_detail.user %>
+        </div>
+        <div class="col-md-8 offset-md-1">
+            <h2>Book detail</h2>
+            <div class="table">
+                <tbody>
+                    <tr>
+                        <td>
+                            <%= image_tag @book_detail.user.get_profile_image if @book.user.respond_to?(:get_profile_image) %><br>
+                            <%= link_to @book_detail.user.name, user_path(@book_detail.user.id) %>
+                        <td>
+                        <td><%= link_to @book_detail.title, book_path(@book_detail.id) %></td>
+                        <td><%= @book_detail.body %></td>
+                        <td>
+                            <% if @book_detail.user == Current.user %>
+                                <%= link_to "Edit", edit_book_path(@book_detail), class: "btn btn-sm btn-success edit" %>
+                            <% end %>        
+                        </td>
+                        <td>
+                            <% if @book_detail.user == Current.user %>
+                                <%= link_to "Destroy", book_path(@book_detail), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-danger destroy" %>
+                            <% end %>                        
+                        </td>
+                    </tr>
+                </tbody>
+            </div>
+        </div>
+    </div>
+</div>
