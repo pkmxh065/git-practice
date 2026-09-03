@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  get "book_coments/create"
   resources :users, only: [:new, :create, :index, :edit, :update, :show] , path_names: { new: 'sign_up' }
-  resources :books, only: [:new, :create, :edit, :update, :index, :show, :destroy]
+  resources :books, only: [:new, :create, :edit, :update, :index, :show, :destroy] do
+    resource :favorites, only: [:create, :destroy]
+    resources :book_coments, only: [:create, :destroy]
+  end
   resource :session
   resources :passwords, param: :token
   root to: "homes#top"

@@ -8,15 +8,31 @@
             <div class="table">
                 <tbody>
                     <tr>
-                        <td>
-                            <%= image_tag @book_detail.user.get_profile_image if @book.user.respond_to?(:get_profile_image) %><br>
+                        <td>                            
+                            <%= image_tag @user.profile_image if @book.user.respond_to?(:get_profile_image) %><br>
                             <%= link_to @book_detail.user.name, user_path(@book_detail.user.id) %>
                         <td>
                         <td><%= link_to @book_detail.title, book_path(@book_detail.id) %></td>
                         <td><%= @book_detail.body %></td>
                         <td>
+                            <% if current_user %>
+                                <% if @book_detail.favorited_by?(current_user) %>
+                                    <%= link_to book_favorites_path(@book_detail), data: { turbo_method: :delete } do %>
+                                        <span>♥</span><%= @book_detail.favorites.count %>
+                                    <% end %>
+                                <% else %>
+                                    <%= link_to book_favorites_path(@book_detail), data: { turbo_method: :post } do %>
+                                        <span>♥</span><%= @book_detail.favorites.count %>
+                                    <% end %>
+                                <% end %>
+                            <% end %>
+                        </td>
+                        <td>
+                            コメント数: <%= @book_coments.count %>
+                        </td>
+                        <td>
                             <% if @book_detail.user == Current.user %>
-                                <%= link_to "Edit", edit_book_path(@book_detail), class: "btn btn-sm btn-success edit" %>
+                                <%= link_to "Edit", edit_book_path(@book_detail), class: "btn btn-sm btn-success"  %>
                             <% end %>        
                         </td>
                         <td>
@@ -26,6 +42,20 @@
                         </td>
                     </tr>
                 </tbody>
+                <div>
+                    <% @book_coments.each do |book_coment| %>
+                        <%= book_coment.coment %>
+                        <% if book_coment.user == current_user %>
+                            <%= link_to "削除", book_book_coment_path(book_coment.book, book_coment), data: { turbo_method: :delete }, class: "btn btn-sm btn-danger" %>
+                        <% end %>
+                    <% end %>
+                </div>
+                <div>
+                    <%= form_with model: [@book_detail, @book_coment] do |f| %>
+                        <%= f.text_area :coment, rows: '5', class: "w-100" %><br>
+                        <%= f.submit "送信", class: "btn btn-sm btn-success" %>
+                    <% end %>
+                </div>
             </div>
         </div>
     </div>
