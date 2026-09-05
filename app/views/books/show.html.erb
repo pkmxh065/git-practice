@@ -12,7 +12,7 @@
                             <%= image_tag @user.profile_image if @book.user.respond_to?(:get_profile_image) %><br>
                             <%= link_to @book_detail.user.name, user_path(@book_detail.user.id) %>
                         <td>
-                        <td><%= link_to @book_detail.title, book_path(@book_detail.id) %></td>
+                        <td><%= link_to @book_detail.title, books_path(@book_detail.id) %></td>
                         <td><%= @book_detail.body %></td>
                         <td>
                             <% if current_user %>

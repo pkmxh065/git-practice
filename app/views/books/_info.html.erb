@@ -2,7 +2,7 @@
 <% if user.profile_image.attached? %>
     <%= image_tag user.profile_image, size: "100x100" %>
 <% else %>
-    <%= image_tag '/home/ubuntu/environment/Bookers2/app/assets/images/no_image.jpg', size: "100x100" %>
+    <%= image_tag 'no_image.jpg', size: "100x100" %>
 <% end %>
 
 <table class="table">
@@ -10,11 +10,27 @@
         <tr></tr>
         <tr>
             <td>name</td>
-            <td><%= current_user.name %></td>
+            <td><%= user.name %></td>
         </tr>
         <tr>
             <td>introduction</td>
-            <td><%= current_user.introduction %></td>
+            <td><%= user.introduction %></td>
+        </tr>
+        <tr>
+            <td>follows</td>
+            <td>
+                <%= link_to followings_user_path(user) do %>
+                    <%= user.followings.count %>
+                <% end %>
+            </td>
+        </tr>
+        <tr>
+            <td>followers</td>
+            <td>
+                <%= link_to followers_user_path(user) do %>
+                    <%= user.followers.count %>
+                <% end %>
+            </td>
         </tr>
     </tbody>
 </table>

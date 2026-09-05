@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
+  get "relationships/create"
+  get "relationships/destroy"
   get "book_coments/create"
-  resources :users, only: [:new, :create, :index, :edit, :update, :show] , path_names: { new: 'sign_up' }
+  resources :users, only: [:new, :create, :index, :edit, :update, :show] , path_names: { new: 'sign_up' } do
+    resource :relationships, only: [:create, :destroy]
+    member do
+      get :followings, :followers
+    end
+  end
   resources :books, only: [:new, :create, :edit, :update, :index, :show, :destroy] do
     resource :favorites, only: [:create, :destroy]
     resources :book_coments, only: [:create, :destroy]
