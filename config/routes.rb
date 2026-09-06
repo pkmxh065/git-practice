@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get "relationships/create"
   get "relationships/destroy"
   get "book_coments/create"
+  get "search", to: "searches#index", as: :search
   resources :users, only: [:new, :create, :index, :edit, :update, :show] , path_names: { new: 'sign_up' } do
     resource :relationships, only: [:create, :destroy]
     member do
@@ -16,6 +17,8 @@ Rails.application.routes.draw do
   resources :passwords, param: :token
   root to: "homes#top"
   get "home/about" => "homes#about", as: "about"
+
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
