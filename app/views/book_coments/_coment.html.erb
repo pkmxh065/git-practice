@@ -1,0 +1,12 @@
+<div id="comment_area">
+    <% @book_coments.each do |book_coment| %>
+        <%= book_coment.coment %>
+        <% if book_coment.user == current_user %>
+            <%= link_to "Destroy", book_book_coment_path(book_coment.book, book_coment), data: { turbo_method: :delete }, class: "btn btn-sm btn-danger" %>
+        <% end %>
+    <% end %>
+</div>
+<%= form_with model: [@book_detail, @book_coment], id: "comment_form" do |f| %>
+    <%= f.text_area :coment, rows: '5', class: "w-100" %><br>
+    <%= f.submit "送信", class: "btn btn-sm btn-success" %>
+<% end %>
